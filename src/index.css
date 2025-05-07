@@ -127,3 +127,37 @@ button:hover {
 .nav__status {
   font-weight: bold;
 }
+
+.content-with-sidebar {
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f2f2f2;
+  padding: 1rem;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.resource-detail-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.resource-content {
+  padding: 1rem;
+}
+
+.back-button-container {
+  display: flex;
+  padding: 1rem;
+}
+
+.back-button {
+  width: 25%;
+}

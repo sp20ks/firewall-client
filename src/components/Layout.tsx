@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import LogoutButton from './LogoutButton';
+import Sidebar from './Sidebar';
 
 interface LayoutProps {
   isLoggedIn: boolean;
@@ -26,9 +27,12 @@ const Layout: React.FC<LayoutProps> = ({ isLoggedIn, handleLogout }) => {
           )}
         </nav>
       </header>
-      <main className="main-content">
-        <Outlet />
-      </main>
+      <div className="content-with-sidebar">
+        {isLoggedIn ? <Sidebar /> : null}
+        <main className="main-content">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 };

@@ -4,6 +4,8 @@ import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import Layout from './components/Layout';
 import Home from './components/Home';
+import ResourcesPage from './components/ResourcesPage';
+import ResourceDetailPage from './components/ResourceDetailPage';
 
 const App: React.FC = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,6 +28,8 @@ const App: React.FC = () => {
               <Route index element={<Home />} />
               <Route path='/register' element={<RegisterForm />} />
               <Route path='/login' element={<LoginForm onLogin={handleLogin} />} />
+              <Route path="/resources" element={<ResourcesPage />} />
+              <Route path="/resources/:id" element={<ResourceDetailPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
