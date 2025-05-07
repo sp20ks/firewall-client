@@ -7,7 +7,7 @@ import Home from './components/Home';
 
 const App: React.FC = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [refreshToken, setRefreshToken] = useState<string | null>(null);
+    const [token, setRefreshToken] = useState<string | null>(null);
 
     const handleLogin = (token: string) => {
         setIsLoggedIn(true);
@@ -22,7 +22,7 @@ const App: React.FC = () => {
     return (
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Layout isLoggedIn={isLoggedIn} refreshToken={refreshToken} handleLogout={handleLogout} />}>
+            <Route path='/' element={<Layout isLoggedIn={isLoggedIn} handleLogout={handleLogout} />}>
               <Route index element={<Home />} />
               <Route path='/register' element={<RegisterForm />} />
               <Route path='/login' element={<LoginForm onLogin={handleLogin} />} />

@@ -4,11 +4,10 @@ import LogoutButton from './LogoutButton';
 
 interface LayoutProps {
   isLoggedIn: boolean;
-  refreshToken: string | null;
   handleLogout: () => void;
 }
 
-const Layout: React.FC<LayoutProps> = ({ isLoggedIn, refreshToken, handleLogout }) => {
+const Layout: React.FC<LayoutProps> = ({ isLoggedIn, handleLogout }) => {
   return (
     <div className="layout">
       <header className="header">
@@ -17,7 +16,7 @@ const Layout: React.FC<LayoutProps> = ({ isLoggedIn, refreshToken, handleLogout 
           {isLoggedIn ? (
             <div className="nav__actions">
               <span className="nav__status">Вы в системе</span>
-              <LogoutButton refreshToken={refreshToken || ''} onLogout={handleLogout} />
+              <LogoutButton onLogout={handleLogout} />
             </div>
           ) : (
             <div className="nav__actions">

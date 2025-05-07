@@ -15,6 +15,3 @@ export const loginUser = (data: { username: string; password: string }) => {
     return api.post('/auth', data);
 };
 
-export const logoutUser = (refreshToken: string) => {
-    return api.post('/logout', { refresh_token: refreshToken });
-};

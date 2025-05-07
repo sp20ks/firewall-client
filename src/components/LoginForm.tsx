@@ -26,9 +26,9 @@ const LoginForm: React.FC<LoginProps> = ({ onLogin }) => {
     const onSubmit = async (data: any) => {
         try {
             const resp = await loginUser(data);
-            const refreshToken = resp.data.refresh_token;
+            const token = resp.data.refresh_token;
             alert('Вход успешен!');
-            onLogin(refreshToken);
+            onLogin(token);
             navigate('/');
         } catch (err) {
             const readableError = translateError(err);
