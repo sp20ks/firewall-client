@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import RegisterForm from './components/RegisterForm';
+import LoginForm from './components/LoginForm';
+import Layout from './components/Layout';
+import Home from './components/Home';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [refreshToken, setRefreshToken] = useState<string | null>(null);
+
+    const handleLogin = (token: string) => {
+        setIsLoggedIn(true);
+        setRefreshToken(token);
+    };
+
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+        setRefreshToken(null);
+    };
+
+    return (
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Layout isLoggedIn={isLoggedIn} refreshToken={refreshToken} handleLogout={handleLogout} />}>
+              <Route index element={<Home />} />
+              <Route path='/register' element={<RegisterForm />} />
+              <Route path='/login' element={<LoginForm onLogin={handleLogin} />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+    );
+};
 
 export default App;

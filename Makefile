@@ -1,26 +1,21 @@
 IMAGE_NAME=firewall-client
 CONTAINER_NAME=firewall-client-container
 PORT=3000
-.PHONY: build
-build:
+.PHONY: rebuild
+rebuild:
 	docker build -t $(IMAGE_NAME) .
 
-.PHONY: run
-run:
-	docker run -d -p $(PORT):80 --name $(CONTAINER_NAME) $(IMAGE_NAME)
+.PHONY: up
+up:
+	docker run -d \
+	-p $(PORT):80 \
+	--env-file .env \
+	--name $(CONTAINER_NAME) \
+	$(IMAGE_NAME)
 
-.PHONY: restart
-restart:
+.PHONY: down
+down:
 	docker rm -f $(CONTAINER_NAME) || true
-	make run
-
-.PHONY: stop
-stop:
-	docker rm -f $(CONTAINER_NAME) || true
-
-.PHONY: clean
-clean:
-	docker rmi $(IMAGE_NAME) || true
 
 .PHONY: build-react
 build-react:
