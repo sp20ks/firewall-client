@@ -161,3 +161,20 @@ button:hover {
 .back-button {
   width: 25%;
 }
+
+.rules-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.rules-table th,
+.rules-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.rules-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}

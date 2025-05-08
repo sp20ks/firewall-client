@@ -14,3 +14,7 @@ export const fetchResources = () => {
 export const fetchResourceById = (id: string) => {
   return api.get(`/resources/${id}`);
 };
+
+export const fetchRules = () => {
+  return api.get('/rules');
+};

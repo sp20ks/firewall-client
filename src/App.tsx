@@ -6,6 +6,7 @@ import Layout from './components/Layout';
 import Home from './components/Home';
 import ResourcesPage from './components/ResourcesPage';
 import ResourceDetailPage from './components/ResourceDetailPage';
+import RulesPage from './components/RulesPage';
 
 const App: React.FC = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,6 +31,7 @@ const App: React.FC = () => {
               <Route path='/login' element={<LoginForm onLogin={handleLogin} />} />
               <Route path="/resources" element={<ResourcesPage />} />
               <Route path="/resources/:id" element={<ResourceDetailPage />} />
+              <Route path="/rules" element={<RulesPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
