@@ -7,6 +7,8 @@ interface Resource {
   name: string;
   http_method: string;
   url: string;
+  host?: string;
+  is_active?: boolean;
 }
 
 const ResourcesPage: React.FC = () => {
@@ -21,15 +23,28 @@ const ResourcesPage: React.FC = () => {
   return (
     <div>
       <h2>Ресурсы</h2>
-      <ul>
-        {resources.map((res) => (
-          <li key={res.id}>
-            <Link to={`/resources/${res.id}`}>
-              {res.name} ({res.http_method} {res.url})
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <table className="resources-table">
+        <thead>
+          <tr>
+            <th>Название</th>
+            <th>Метод</th>
+            <th>URL</th>
+            <th>Ссылка</th>
+          </tr>
+        </thead>
+        <tbody>
+          {resources.map((res) => (
+            <tr key={res.id}>
+              <td>{res.name}</td>
+              <td>{res.http_method}</td>
+              <td>{res.url}</td>
+              <td>
+                <Link to={`/resources/${res.id}`}>Подробнее</Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
