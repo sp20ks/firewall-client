@@ -162,36 +162,32 @@ button:hover {
   width: 25%;
 }
 
-.rules-table {
+.data-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
-.rules-table th,
-.rules-table td {
+.data-table th,
+.data-table td {
   border: 1px solid #ddd;
-  padding: 8px;
-}
-
-.rules-table th {
-  background-color: #f2f2f2;
+  padding: 10px;
   text-align: left;
 }
 
-.resources-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-}
-
-.resources-table th,
-.resources-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-.resources-table th {
+.data-table th {
   background-color: #f2f2f2;
-  text-align: left;
+  font-weight: 600;
+}
+
+.data-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.data-table tr:hover {
+  background-color: #f1f1f1;
 }

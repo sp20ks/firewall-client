@@ -23,7 +23,7 @@ const RulesPage: React.FC = () => {
   return (
     <div>
       <h2>Правила</h2>
-      <table className="rules-table">
+      <table className="data-table">
         <thead>
           <tr>
             <th>Название</th>

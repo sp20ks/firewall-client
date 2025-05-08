@@ -22,8 +22,7 @@ const ResourcesPage: React.FC = () => {
 
   return (
     <div>
-      <h2>Ресурсы</h2>
-      <table className="resources-table">
+      <table className="data-table">
         <thead>
           <tr>
             <th>Название</th>

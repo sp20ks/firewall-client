@@ -7,6 +7,7 @@ import Home from './components/Home';
 import ResourcesPage from './components/ResourcesPage';
 import ResourceDetailPage from './components/ResourceDetailPage';
 import RulesPage from './components/RulesPage';
+import IPListsPage from './components/IPListsPage';
 
 const App: React.FC = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,6 +33,7 @@ const App: React.FC = () => {
               <Route path="/resources" element={<ResourcesPage />} />
               <Route path="/resources/:id" element={<ResourceDetailPage />} />
               <Route path="/rules" element={<RulesPage />} />
+              <Route path="/ip_lists" element={<IPListsPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
