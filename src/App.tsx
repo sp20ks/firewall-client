@@ -9,6 +9,7 @@ import ResourceDetailPage from './components/ResourceDetailPage';
 import RulesPage from './components/RulesPage';
 import IPListsPage from './components/IPListsPage';
 import EditIPListPage from './components/EditIPListPage';
+import PrivateRoute from './components/PrivateRoute';
 
 const App: React.FC = () => {
     return (
@@ -18,11 +19,31 @@ const App: React.FC = () => {
               <Route index element={<Home />} />
               <Route path='/register' element={<RegisterForm />} />
               <Route path='/login' element={<LoginForm />} />
-              <Route path="/resources" element={<ResourcesPage />} />
-              <Route path="/resources/:id" element={<ResourceDetailPage />} />
-              <Route path="/rules" element={<RulesPage />} />
-              <Route path="/ip_lists" element={<IPListsPage />} />
-              <Route path="/ip_lists/:id/edit" element={<EditIPListPage />} />
+              <Route path="/resources" element={
+                <PrivateRoute>
+                  <ResourcesPage />
+                </PrivateRoute>
+              } />
+              <Route path="/resources/:id" element={
+                <PrivateRoute>
+                  <ResourceDetailPage />
+                </PrivateRoute>
+              } />
+              <Route path="/rules" element={
+                <PrivateRoute>
+                  <RulesPage />
+                </PrivateRoute>
+              } />
+              <Route path="/ip_lists" element={
+                <PrivateRoute>
+                  <IPListsPage />
+                </PrivateRoute>
+              } />
+              <Route path="/ip_lists/:id/edit" element={
+                <PrivateRoute>
+                  <EditIPListPage />
+                </PrivateRoute>
+              } />
             </Route>
           </Routes>
         </BrowserRouter>
