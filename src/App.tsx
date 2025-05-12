@@ -8,32 +8,21 @@ import ResourcesPage from './components/ResourcesPage';
 import ResourceDetailPage from './components/ResourceDetailPage';
 import RulesPage from './components/RulesPage';
 import IPListsPage from './components/IPListsPage';
+import EditIPListPage from './components/EditIPListPage';
 
 const App: React.FC = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [token, setRefreshToken] = useState<string | null>(null);
-
-    const handleLogin = (token: string) => {
-        setIsLoggedIn(true);
-        setRefreshToken(token);
-    };
-
-    const handleLogout = () => {
-        setIsLoggedIn(false);
-        setRefreshToken(null);
-    };
-
     return (
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Layout isLoggedIn={isLoggedIn} handleLogout={handleLogout} />}>
+            <Route path='/' element={<Layout />}>
               <Route index element={<Home />} />
               <Route path='/register' element={<RegisterForm />} />
-              <Route path='/login' element={<LoginForm onLogin={handleLogin} />} />
+              <Route path='/login' element={<LoginForm />} />
               <Route path="/resources" element={<ResourcesPage />} />
               <Route path="/resources/:id" element={<ResourceDetailPage />} />
               <Route path="/rules" element={<RulesPage />} />
               <Route path="/ip_lists" element={<IPListsPage />} />
+              <Route path="/ip_lists/:id/edit" element={<EditIPListPage />} />
             </Route>
           </Routes>
         </BrowserRouter>

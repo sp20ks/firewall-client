@@ -1,14 +1,17 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import LogoutButton from './LogoutButton';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 
-interface LayoutProps {
-  isLoggedIn: boolean;
-  handleLogout: () => void;
-}
+const Layout: React.FC = () => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+  const isLoggedIn = Boolean(token);
 
-const Layout: React.FC<LayoutProps> = ({ isLoggedIn, handleLogout }) => {
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
   return (
     <div className="layout">
       <header className="header">
@@ -17,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({ isLoggedIn, handleLogout }) => {
           {isLoggedIn ? (
             <div className="nav__actions">
               <span className="nav__status">Вы в системе</span>
-              <LogoutButton onLogout={handleLogout} />
+              <button onClick={handleLogout} className="btn btn--outline">Выйти</button>
             </div>
           ) : (
             <div className="nav__actions">
@@ -28,7 +31,7 @@ const Layout: React.FC<LayoutProps> = ({ isLoggedIn, handleLogout }) => {
         </nav>
       </header>
       <div className="content-with-sidebar">
-        {isLoggedIn ? <Sidebar /> : null}
+        {isLoggedIn && <Sidebar />}
         <main className="main-content">
           <Outlet />
         </main>

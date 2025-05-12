@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { fetchIPLists } from '../api/rulesEngineService';
 
 interface IPList {
@@ -28,6 +29,7 @@ const IPListsPage: React.FC = () => {
             <th>Тип списка</th>
             <th>Создатель</th>
             <th>Дата создания</th>
+            <th>Ссылка на редактирование</th>
           </tr>
         </thead>
         <tbody>
@@ -37,6 +39,11 @@ const IPListsPage: React.FC = () => {
               <td>{list.list_type}</td>
               <td>{list.creator_id}</td>
               <td>{new Date(list.created_at || '').toLocaleString()}</td>
+              <td>
+                <Link to={`/ip_lists/${list.id}/edit`} state={{ ipList: list }}>
+                  Редактировать
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>

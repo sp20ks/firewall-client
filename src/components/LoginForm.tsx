@@ -13,11 +13,7 @@ const schema = yup.object().shape({
     password: yup.string().min(6, 'Минимальная длина пароля — 6 символов').required('Пароль обязателен'),
 });
 
-interface LoginProps {
-    onLogin: (token: string) => void;
-}
-
-const LoginForm: React.FC<LoginProps> = ({ onLogin }) => {
+const LoginForm: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
     });
@@ -26,9 +22,7 @@ const LoginForm: React.FC<LoginProps> = ({ onLogin }) => {
     const onSubmit = async (data: any) => {
         try {
             const resp = await loginUser(data);
-            const token = resp.data.refresh_token;
-            alert('Вход успешен!');
-            onLogin(token);
+            localStorage.setItem('token', resp.data.token);
             navigate('/');
         } catch (err) {
             const readableError = translateError(err);

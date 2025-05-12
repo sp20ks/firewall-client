@@ -22,3 +22,13 @@ export const fetchRules = () => {
 export const fetchIPLists = () => {
   return api.get('/ip_lists');
 };
+
+export const updateIPList = (id: string, data: { ip: string; list_type: string }) => {
+  const token = localStorage.getItem('token');
+  return api.put(`/ip_lists/${id}`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+};
