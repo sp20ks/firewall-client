@@ -155,7 +155,9 @@ button:hover {
 
 .back-button-container {
   display: flex;
+  gap: 1rem;
   padding: 1rem;
+  justify-content: flex-start;
 }
 
 .back-button {
