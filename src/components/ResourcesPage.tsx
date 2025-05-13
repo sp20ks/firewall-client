@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchResources } from '../api/rulesEngineService';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface Resource {
   id: string;
@@ -13,6 +13,7 @@ interface Resource {
 
 const ResourcesPage: React.FC = () => {
   const [resources, setResources] = useState<Resource[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchResources().then((res) => {
@@ -22,6 +23,7 @@ const ResourcesPage: React.FC = () => {
 
   return (
     <div>
+      <h2>Ресурсы</h2>
       <table className="data-table">
         <thead>
           <tr>
@@ -44,6 +46,12 @@ const ResourcesPage: React.FC = () => {
           ))}
         </tbody>
       </table>
+
+      <div className="back-button-container">
+        <button className="back-button" onClick={() => navigate('/resources/create')}>
+          Создать ресурс
+        </button>
+      </div>
     </div>
   );
 };

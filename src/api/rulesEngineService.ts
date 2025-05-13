@@ -42,3 +42,12 @@ export const updateRule = (id: string, data: { name: string; attack_type: string
     },
   });
 };
+
+export const createResource = (data: any) => {
+  const token = localStorage.getItem('token');
+  return api.post('/resources', data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

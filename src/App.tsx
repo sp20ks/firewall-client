@@ -11,6 +11,7 @@ import IPListsPage from './components/IPListsPage';
 import EditIPListPage from './components/EditIPListPage';
 import PrivateRoute from './components/PrivateRoute';
 import EditRulePage from './components/EditRulePage';
+import CreateResourcePage from './components/CreateResourcePage';
 
 const App: React.FC = () => {
     return (
@@ -48,6 +49,11 @@ const App: React.FC = () => {
               <Route path="/rules/:id/edit" element={
                 <PrivateRoute>
                   <EditRulePage />
+                </PrivateRoute>
+              } />
+              <Route path="/resources/create" element={
+                <PrivateRoute>
+                  <CreateResourcePage />
                 </PrivateRoute>
               } />
             </Route>
