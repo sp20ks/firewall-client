@@ -32,7 +32,6 @@ const CreateResourcePage: React.FC = () => {
         <Input name="http_method" label="Метод (GET, POST и т.д.)" error={errors.http_method?.message as string} register={register} />
         <Input name="url" label="URL (например, /server3)" error={errors.url?.message as string} register={register} />
         <Input name="host" label="Хост (например, http://server3:4567)" error={errors.host?.message as string} register={register} />
-        <Input name="creator_id" label="ID создателя" error={errors.creator_id?.message as string} register={register} />
       </Form>
     </div>
   );

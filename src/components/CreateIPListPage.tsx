@@ -38,7 +38,6 @@ const CreateIPListPage: React.FC = () => {
           wrapperClass="form-group"
           className="form-control"
         />
-       <Input name="creator_id" label="ID создателя" error={errors.creator_id?.message as string} register={register} />
       </Form>
     </div>
   );
