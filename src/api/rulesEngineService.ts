@@ -51,3 +51,12 @@ export const createResource = (data: any) => {
     },
   });
 };
+
+export const createRule = (data: any) => {
+  const token = localStorage.getItem('token');
+  return api.post('/rules', data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

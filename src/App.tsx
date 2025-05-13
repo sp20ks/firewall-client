@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
@@ -12,6 +11,7 @@ import EditIPListPage from './components/EditIPListPage';
 import PrivateRoute from './components/PrivateRoute';
 import EditRulePage from './components/EditRulePage';
 import CreateResourcePage from './components/CreateResourcePage';
+import CreateRulePage from './components/CreateRulePage';
 
 const App: React.FC = () => {
     return (
@@ -54,6 +54,11 @@ const App: React.FC = () => {
               <Route path="/resources/create" element={
                 <PrivateRoute>
                   <CreateResourcePage />
+                </PrivateRoute>
+              } />
+              <Route path="/rules/create" element={
+                <PrivateRoute>
+                  <CreateRulePage />
                 </PrivateRoute>
               } />
             </Route>

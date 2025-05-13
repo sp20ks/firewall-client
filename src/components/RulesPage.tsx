@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { fetchRules } from '../api/rulesEngineService';
 
 interface Rule {
@@ -14,6 +14,7 @@ interface Rule {
 
 const RulesPage: React.FC = () => {
   const [rules, setRules] = useState<Rule[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchRules().then((res) => {
@@ -54,6 +55,12 @@ const RulesPage: React.FC = () => {
           ))}
         </tbody>
       </table>
+
+      <div className="back-button-container">
+        <button className="back-button" onClick={() => navigate('/rules/create')}>
+          Создать правило
+        </button>
+      </div>
     </div>
   );
 };
