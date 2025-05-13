@@ -60,3 +60,12 @@ export const createRule = (data: any) => {
     },
   });
 };
+
+export const createIPList = (data: any) => {
+  const token = localStorage.getItem('token');
+  return api.post('/ip_lists', data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { fetchIPLists } from '../api/rulesEngineService';
 
 interface IPList {
@@ -12,6 +12,7 @@ interface IPList {
 
 const IPListsPage: React.FC = () => {
   const [lists, setIPLists] = useState<IPList[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchIPLists().then((res) => {
@@ -48,6 +49,12 @@ const IPListsPage: React.FC = () => {
           ))}
         </tbody>
       </table>
+
+      <div className="back-button-container">
+        <button className="back-button" onClick={() => navigate('/ip_lists/create')}>
+          Создать IP список
+        </button>
+      </div>
     </div>
   );
 };
