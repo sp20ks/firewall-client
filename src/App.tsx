@@ -13,6 +13,7 @@ import EditRulePage from './components/EditRulePage';
 import CreateResourcePage from './components/CreateResourcePage';
 import CreateRulePage from './components/CreateRulePage';
 import CreateIPListPage from './components/CreateIPListPage';
+import EditResourcePage from './components/EditResourcePage';
 
 const App: React.FC = () => {
     return (
@@ -65,6 +66,11 @@ const App: React.FC = () => {
               <Route path="/ip_lists/create" element={
                 <PrivateRoute>
                   <CreateIPListPage />
+                </PrivateRoute>
+              } />
+              <Route path="/resources/:id/edit" element={
+                <PrivateRoute>
+                  <EditResourcePage />
                 </PrivateRoute>
               } />
             </Route>

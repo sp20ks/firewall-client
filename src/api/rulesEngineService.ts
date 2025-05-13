@@ -69,3 +69,53 @@ export const createIPList = (data: any) => {
     },
   });
 };
+
+export const updateResource = (id: string, data: any) => {
+  const token = localStorage.getItem('token');
+  return api.put(`/resources/${id}`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
+export const attachRuleToResource = (resourceId: string, ruleId: string) => {
+  const token = localStorage.getItem('token');
+  return api.post(`/resources/${resourceId}/attach_rule`, { rule_id: ruleId }, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
+export const detachRuleFromResource = (resourceId: string, ruleId: string) => {
+  const token = localStorage.getItem('token');
+  return api.post(`/resources/${resourceId}/detach_rule`, { rule_id: ruleId }, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
+export const attachIpListToResource = (resourceId: string, ipListIdruleId: string) => {
+  const token = localStorage.getItem('token');
+  return api.post(`/resources/${resourceId}/attach_ip_list`, { ip_list_id: ipListIdruleId }, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
+export const detachIpListFromResource = (resourceId: string, ipListIdruleId: string) => {
+  const token = localStorage.getItem('token');
+  return api.post(`/resources/${resourceId}/detach_ip_list`, { ip_list_id: ipListIdruleId }, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+};

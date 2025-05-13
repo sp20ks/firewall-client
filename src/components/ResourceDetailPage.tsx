@@ -49,6 +49,11 @@ const ResourceDetailPage: React.FC = () => {
           ← Назад
         </button>
       </div>
+      <div className="back-button-container">
+        <button className="back-button" onClick={() => navigate(`/resources/${resource.id}/edit`)}>
+          Редактировать ресурс
+        </button>
+      </div>
     </div>
   );
 };
