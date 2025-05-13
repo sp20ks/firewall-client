@@ -32,3 +32,13 @@ export const updateIPList = (id: string, data: { ip: string; list_type: string }
     },
   });
 };
+
+export const updateRule = (id: string, data: { name: string; attack_type: string, action_type: string, is_active: boolean }) => {
+  const token = localStorage.getItem('token');
+  return api.put(`/rules/${id}`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+};

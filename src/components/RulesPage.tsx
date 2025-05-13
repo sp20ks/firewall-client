@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { fetchRules } from '../api/rulesEngineService';
 
 interface Rule {
@@ -32,6 +33,7 @@ const RulesPage: React.FC = () => {
             <th>Активно</th>
             <th>Создатель</th>
             <th>Дата создания</th>
+            <th>Ссылка на редактирование</th>
           </tr>
         </thead>
         <tbody>
@@ -43,6 +45,11 @@ const RulesPage: React.FC = () => {
               <td>{rule.is_active ? 'Да' : 'Нет'}</td>
               <td>{rule.creator_id}</td>
               <td>{new Date(rule.created_at || '').toLocaleString()}</td>
+              <td>
+                <Link to={`/rules/${rule.id}/edit`} state={{ rule: rule }}>
+                  Редактировать
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>
