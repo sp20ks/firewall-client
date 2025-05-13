@@ -29,6 +29,7 @@ const ResourcesPage: React.FC = () => {
           <tr>
             <th>Название</th>
             <th>Метод</th>
+            <th>Активен</th>
             <th>URL</th>
             <th>Ссылка</th>
           </tr>
@@ -38,6 +39,7 @@ const ResourcesPage: React.FC = () => {
             <tr key={res.id}>
               <td>{res.name}</td>
               <td>{res.http_method}</td>
+              <td>{res.is_active ? 'Да' : 'Нет'}</td>
               <td>{res.url}</td>
               <td>
                 <Link to={`/resources/${res.id}`}>Подробнее</Link>
