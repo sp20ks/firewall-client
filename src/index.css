@@ -270,3 +270,31 @@ select:focus {
   border-color: #007bff;
   box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
 }
+
+.edit-resource-page {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 2rem 0;
+}
+
+.edit-resource-form {
+  flex: 1;
+  max-width: 500px;
+  margin: 0;
+}
+
+.resource-side-panel {
+  flex: 1;
+  max-width: 400px;
+}
+
+@media (max-width: 768px) {
+  .edit-resource-page {
+    flex-direction: column;
+  }
+
+  .resource-side-panel {
+    margin-top: 2rem;
+  }
+}

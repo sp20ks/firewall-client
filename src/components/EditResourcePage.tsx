@@ -87,10 +87,17 @@ const EditResourcePage: React.FC = () => {
   if (!resource) return <div>Загрузка...</div>;
 
   return (
-    <div className="edit-resource-container">
+    <>
       <h2>Редактировать ресурс</h2>
-      <div className="edit-resource-content">
-        <Form onSubmit={onSubmit} handleSubmit={handleSubmit} register={register} buttonLabel="Сохранить">
+
+      <div className="edit-resource-page">
+        <Form
+          className="edit-resource-form"
+          onSubmit={onSubmit}
+          handleSubmit={handleSubmit}
+          register={register}
+          buttonLabel="Сохранить"
+        >
           <Input name="name" label="Название" error={errors.name?.message as string} />
           <Input name="http_method" label="HTTP-метод" error={errors.http_method?.message as string} />
           <Input name="url" label="URL" error={errors.url?.message as string} />
@@ -105,7 +112,6 @@ const EditResourcePage: React.FC = () => {
           <div className="form-group">
             <label htmlFor="rules-select">Привязать правило</label>
             <select
-              className="styled-select"
               id="rules-select"
               onChange={(e) => {
                 if (e.target.value) handleAttachRule(e.target.value);
@@ -127,7 +133,6 @@ const EditResourcePage: React.FC = () => {
           <div className="form-group">
             <label htmlFor="iplist-select">Привязать IP-лист</label>
             <select
-              className="styled-select"
               id="iplist-select"
               onChange={(e) => {
                 if (e.target.value) handleAttachIpList(e.target.value);
@@ -146,33 +151,46 @@ const EditResourcePage: React.FC = () => {
             </select>
           </div>
         </Form>
-      </div>
-			<div className="resource-side-panel">
-				<div className="list-section">
-					<h3>Правила</h3>
-					<ul>
-						{resource.rules?.map((r: any) => (
-							<li key={r.id}>
-								<span>{r.attack_type} → {r.action_type}</span>
-								<button type="button" className="detach-button" onClick={() => handleDetachRule(r.id)}>Удалить</button>
-							</li>
-						))}
-					</ul>
-				</div>
 
-				<div className="list-section">
-					<h3>IP-листы</h3>
-					<ul>
-						{resource.ip_lists?.map((ip: any) => (
-							<li key={ip.id}>
-								<span>{ip.list_type}: {ip.ip}</span>
-								<button type="button" className="detach-button" onClick={() => handleDetachIpList(ip.id)}>Удалить</button>
-							</li>
-						))}
-					</ul>
-				</div>
-			</div>
-    </div>
+        <aside className="resource-side-panel">
+          <div className="list-section">
+            <h3>Правила</h3>
+            <ul>
+              {resource.rules?.map((r: any) => (
+                <li key={r.id}>
+                  <span>{r.attack_type} → {r.action_type}</span>
+                  <button
+                    type="button"
+                    className="detach-button"
+                    onClick={() => handleDetachRule(r.id)}
+                  >
+                    Удалить
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="list-section">
+            <h3>IP-листы</h3>
+            <ul>
+              {resource.ip_lists?.map((ip: any) => (
+                <li key={ip.id}>
+                  <span>{ip.list_type}: {ip.ip}</span>
+                  <button
+                    type="button"
+                    className="detach-button"
+                    onClick={() => handleDetachIpList(ip.id)}
+                  >
+                    Удалить
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </>
   );
 };
 
