@@ -155,38 +155,58 @@ const EditResourcePage: React.FC = () => {
         <aside className="resource-side-panel">
           <div className="list-section">
             <h3>Правила</h3>
-            <ul>
-              {resource.rules?.map((r: any) => (
-                <li key={r.id}>
-                  <span>{r.attack_type} → {r.action_type}</span>
-                  <button
-                    type="button"
-                    className="detach-button"
-                    onClick={() => handleDetachRule(r.id)}
-                  >
-                    Удалить
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>Правило</th>
+                  <th>Действие</th>
+                </tr>
+              </thead>
+              <tbody>
+                {resource.rules?.map((r: any) => (
+                  <tr key={r.id}>
+                    <td>{r.attack_type} → {r.action_type}</td>
+                    <td>
+                      <button
+                        type="button"
+                        className="detach-button"
+                        onClick={() => handleDetachRule(r.id)}
+                      >
+                        Удалить
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
           <div className="list-section">
             <h3>IP-листы</h3>
-            <ul>
-              {resource.ip_lists?.map((ip: any) => (
-                <li key={ip.id}>
-                  <span>{ip.list_type}: {ip.ip}</span>
-                  <button
-                    type="button"
-                    className="detach-button"
-                    onClick={() => handleDetachIpList(ip.id)}
-                  >
-                    Удалить
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <table className="data-table">
+              <thead>
+                <tr>
+                  <th>IP-лист</th>
+                  <th>Действие</th>
+                </tr>
+              </thead>
+              <tbody>
+                {resource.ip_lists?.map((ip: any) => (
+                  <tr key={ip.id}>
+                    <td>{ip.list_type}: {ip.ip}</td>
+                    <td>
+                      <button
+                        type="button"
+                        className="detach-button"
+                        onClick={() => handleDetachIpList(ip.id)}
+                      >
+                        Удалить
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </aside>
       </div>
